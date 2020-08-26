@@ -1,5 +1,8 @@
 package com.example.jetpacklearn;
 
+/**
+ * bean类
+ */
 public class Student {
    public String name;
     public int age;
