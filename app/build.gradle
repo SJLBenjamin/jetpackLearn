@@ -35,8 +35,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
 
-
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -45,11 +43,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-
-
-
-
 
 
     //lifecycle依赖
@@ -82,4 +75,18 @@ dependencies {
 
     // optional - Test helpers for LiveData
     testImplementation "androidx.arch.core:core-testing:$arch_version"
+
+
+    //paging
+    def paging_version = "2.1.2"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    // For Kotlin use paging-runtime-ktx
+
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common:$paging_version"
+    // For Kotlin use paging-common-ktx
+
+    // optional - RxJava support
+    implementation "androidx.paging:paging-rxjava2:$paging_version" // For Kotlin use paging-rx
 }

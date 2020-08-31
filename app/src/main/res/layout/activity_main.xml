@@ -11,6 +11,10 @@
             type="com.example.jetpacklearn.Student" />
 
         <variable
+            name="student1"
+            type="com.example.jetpacklearn.Student" />
+
+        <variable
             name="studentObservable"
             type="com.example.jetpacklearn.StudentObservable" />
 
@@ -25,7 +29,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <!--中文字符需要用``修饰,注意是和~相同的键-->
+        <!--中文字符需要用``修饰,注意是和~相同的键,此处是单向绑定,@{},即student对象产生变化时,控件显示内容也产生变化-->
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
@@ -36,6 +40,17 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--此处是双向绑定,即view的内容产生变化,那么对应的student对象也会产生变化,写法为 @={},单向绑定是@{} -->
+        <EditText
+            android:id="@+id/et_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="请输入名字"
+            android:text="@={student1.name}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
         <TextView
             android:id="@+id/tv_age"
             android:layout_width="wrap_content"
@@ -44,7 +59,7 @@
             android:text="@{Integer.toString(student.age),default = 18}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+            app:layout_constraintTop_toBottomOf="@id/et_age" />
 
         <!--中文字符需要用``修饰,注意是和~相同的键-->
         <TextView
@@ -89,7 +104,11 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_hobbit" />
 
+        <!--自定义属性,必须@{}去取值,其中字符串需要``,直接写默认是int类型-->
         <ImageView
+            app:student="@{student}"
+            app:age="@{123}"
+            app:imageUrl="@{`123456`}"
             android:id="@+id/iv_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
