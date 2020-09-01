@@ -12,6 +12,9 @@ import android.os.Bundle;
 
 import com.example.jetpacklearn.R;
 
+/*
+* https://www.loongwind.com/archives/367.html
+* */
 public class PagingActivity extends AppCompatActivity {
     private RecyclerView rv;
     @Override

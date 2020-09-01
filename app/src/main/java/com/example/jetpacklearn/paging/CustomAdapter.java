@@ -19,7 +19,7 @@ import com.example.jetpacklearn.R;
 
 public class CustomAdapter extends PagedListAdapter<DataBean, CustomAdapter.CustomViewHolder> {
 
-    Context mContext ;
+    Context mContext;
 
     public CustomAdapter( Context context) {
         super(itemCallback);
@@ -29,7 +29,7 @@ public class CustomAdapter extends PagedListAdapter<DataBean, CustomAdapter.Cust
     class CustomViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         TextView id;
-        DataBean dataBean;
+       // DataBean dataBean;
 
 
         /**
@@ -44,7 +44,7 @@ public class CustomAdapter extends PagedListAdapter<DataBean, CustomAdapter.Cust
       public void bindTo(DataBean item){
             name.setText(item.name);
             id.setText(item.id+"");
-            dataBean = item;
+            //dataBean = item;
         }
     }
 

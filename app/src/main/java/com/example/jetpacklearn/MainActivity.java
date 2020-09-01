@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.jetpacklearn.databinding.ActivityMainBinding;
 import com.example.jetpacklearn.livedata.LiveDataActivity;
 import com.example.jetpacklearn.paging.PagingActivity;
+import com.example.jetpacklearn.workmanager.WorkMangerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements LifecycleOwner {
@@ -87,9 +88,9 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
         getLifecycle().addObserver(new LifeCycleLearn());
 
 
-        startActivity(new Intent(MainActivity.this, PagingActivity.class));
+        //startActivity(new Intent(MainActivity.this, PagingActivity.class));
         // startActivity(new Intent(MainActivity.this, LiveDataActivity.class));
-
+        startActivity(new Intent(MainActivity.this, WorkMangerActivity.class));
     }
 
     //将条目id储存起来
