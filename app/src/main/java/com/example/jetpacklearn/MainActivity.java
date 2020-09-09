@@ -16,26 +16,33 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.jetpacklearn.binding.Student;
+import com.example.jetpacklearn.binding.StudentObservable;
 import com.example.jetpacklearn.databinding.ActivityMainBinding;
+import com.example.jetpacklearn.lifecycle.LifeCycleLearn;
 import com.example.jetpacklearn.livedata.LiveDataActivity;
-import com.example.jetpacklearn.paging.PagingActivity;
 import com.example.jetpacklearn.workmanager.WorkMangerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements LifecycleOwner {
     String TAG ="MainActivity";
     Student student =new Student("宋炯乐",3);
-    Student student1 =new Student("宋大神",24);
+    Student student1 =new Student("宋123",24);
+    //binding中的用法
     StudentObservable studentObservable=new StudentObservable(new ObservableField<String>("男"),new ObservableInt(70));
 
-    //设置map类型的值,类型需要和xml文件中设置的一致
+    //设置map类型的值,类型需要和xml文件中设置的一致,binding中的用法
     ObservableArrayMap<String, Object> stringIntegerObservableArrayMap = new ObservableArrayMap<String, Object>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //此处注意,和传入的this有关系,如果是其他Activity,那么名字就是其他的Activity
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        //指定当前绑定的Activity,生命周期跟随此Activity
+        activityMainBinding.setLifecycleOwner(this);
 
         //activityMainBinding.tvName.setText("123");
         activityMainBinding.setStudent(student);
@@ -49,10 +56,15 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
         activityMainBinding.setStudentObservableMap(stringIntegerObservableArrayMap);
         student.setAge(88);
 
+
+
+        //设置点击事件
+        activityMainBinding.setClick(new Click());
+
         //loadImage((ImageView) findViewById(R.id.iv_show),"123456",getDrawable(R.drawable.ic_launcher),getDrawable(R.drawable.ic_launcher));
 
         /*
-        * BottomNavigationView以下是是
+        * BottomNavigationView以下是
         *
         * */
        final BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bv_dh);
@@ -89,8 +101,8 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
 
 
         //startActivity(new Intent(MainActivity.this, PagingActivity.class));
-        // startActivity(new Intent(MainActivity.this, LiveDataActivity.class));
-        startActivity(new Intent(MainActivity.this, WorkMangerActivity.class));
+         //startActivity(new Intent(MainActivity.this, LiveDataActivity.class));
+        //startActivity(new Intent(MainActivity.this, WorkMangerActivity.class));
     }
 
     //将条目id储存起来
@@ -105,6 +117,11 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
         }
     }
 
+    public class Click{
+        public void clickName(){
+            Log.d(TAG,"clickName=====");
+        }
+    }
 
 
     /**必须声明为static,不然无法自动被调用

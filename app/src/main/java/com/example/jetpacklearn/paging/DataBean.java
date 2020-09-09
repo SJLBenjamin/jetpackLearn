@@ -1,5 +1,8 @@
 package com.example.jetpacklearn.paging;
 
+/**
+ * 实体类
+ */
 public class DataBean {
     int id;
     String name;

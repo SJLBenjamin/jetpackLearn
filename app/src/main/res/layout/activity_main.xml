@@ -8,20 +8,24 @@
 
         <variable
             name="student"
-            type="com.example.jetpacklearn.Student" />
+            type="com.example.jetpacklearn.binding.Student" />
 
         <variable
             name="student1"
-            type="com.example.jetpacklearn.Student" />
+            type="com.example.jetpacklearn.binding.Student" />
 
         <variable
             name="studentObservable"
-            type="com.example.jetpacklearn.StudentObservable" />
+            type="com.example.jetpacklearn.binding.StudentObservable" />
 
         <!--ObservableArrayMap,指定类型String和Object,所以可以存任何String为key,Object为value-->
         <variable
             name="studentObservableMap"
             type="androidx.databinding.ObservableArrayMap&lt;String, Object&gt;" />
+
+        <variable
+            name="click"
+            type="com.example.jetpacklearn.MainActivity.Click" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +35,7 @@
 
         <!--中文字符需要用``修饰,注意是和~相同的键,此处是单向绑定,@{},即student对象产生变化时,控件显示内容也产生变化-->
         <TextView
+            android:onClick="@{()->click.clickName()}"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

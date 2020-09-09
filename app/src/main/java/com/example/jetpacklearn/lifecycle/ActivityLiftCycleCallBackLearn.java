@@ -1,4 +1,4 @@
-package com.example.jetpacklearn;
+package com.example.jetpacklearn.lifecycle;
 
 import android.app.Activity;
 import android.app.Application;

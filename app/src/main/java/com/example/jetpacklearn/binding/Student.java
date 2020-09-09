@@ -1,4 +1,4 @@
-package com.example.jetpacklearn;
+package com.example.jetpacklearn.binding;
 
 /**
  * bean类

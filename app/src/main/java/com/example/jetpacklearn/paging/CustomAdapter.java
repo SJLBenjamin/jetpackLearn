@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jetpacklearn.R;
 
+/**
+ * 适配器
+ */
 public class CustomAdapter extends PagedListAdapter<DataBean, CustomAdapter.CustomViewHolder> {
 
     Context mContext;
@@ -68,6 +71,11 @@ public class CustomAdapter extends PagedListAdapter<DataBean, CustomAdapter.Cust
         return new CustomViewHolder((ViewGroup) inflate);
     }
 
+    /**
+     * 条目和holder绑定
+     * @param holder 实体类
+     * @param position  当前是第几个位置
+     */
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         //PagedListAdapter创建了一个数据List,用来存储dataBean,通过getItem可以获取此对象
@@ -75,7 +83,7 @@ public class CustomAdapter extends PagedListAdapter<DataBean, CustomAdapter.Cust
     }
 
 
-    //返回值是onCreateViewHolder中的viewType
+    //返回值是onCreateViewHolder中的viewType,设置对应位置的标识
     @Override
     public int getItemViewType(int position) {
         //如果当前位置的值是我想改变布局的值,那么就将当前的位置的布局文件转化的id记录下来
@@ -87,7 +95,7 @@ public class CustomAdapter extends PagedListAdapter<DataBean, CustomAdapter.Cust
 
     }
 
-    //判断两个对象是否相等
+    //判断两个对象是否相等,指的是实体类
     public static   DiffUtil.ItemCallback<DataBean> itemCallback = new DiffUtil.ItemCallback<DataBean>() {
         @Override
         public boolean areItemsTheSame(@NonNull DataBean oldItem, @NonNull DataBean newItem) {
